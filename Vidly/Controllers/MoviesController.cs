@@ -18,12 +18,13 @@ namespace Vidly.Controllers
 
         public ActionResult AllMovies()
         {
-            var movie_1 = new Movie();
-            var movieShreck = new Movie() { Name = "Schrek" };
-            var movieWallE = new Movie() { Name = "Wall-E" };
-            movie_1.movies.Add(movieShreck);
-            movie_1.movies.Add(movieWallE);
-            return View(movie_1);
+            
+            List<Movie> movies = new List<Movie>();
+            movies.Add(new Movie() { Name = "Schrek" });
+            movies.Add(new Movie() { Name = "Wall-E" });
+
+            ViewData["movies"] = movies;
+            return View();
         }
 
 
