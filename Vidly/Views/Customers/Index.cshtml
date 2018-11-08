@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var indexOfName = 0;
+    var list = ViewData["Customers"] as List<Vidly.Models.Customer>;
+}
+
+<h2>Customers</h2>
+@if (list.Count < 1)
+{
+    <p>We don't currently have customers!</p>
+}
+else
+{
+    <table class="table table-bordered table-hover">
+
+
+        <tbody>
+            <tr>
+                <th>Customers</th>
+            </tr>
+
+            @foreach (var item in list)
+            {
+                indexOfName = list.IndexOf(item);
+
+                <tr>
+                    <td>@Html.ActionLink(@item.Name, "Details", new { index = indexOfName })</td>
+
+
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}
+
