@@ -16,6 +16,16 @@ namespace Vidly.Controllers
             return View(movie);
         }
 
+        public ActionResult AllMovies()
+        {
+            var movie_1 = new Movie();
+            var movieShreck = new Movie() { Name = "Schrek" };
+            var movieWallE = new Movie() { Name = "Wall-E" };
+            movie_1.movies.Add(movieShreck);
+            movie_1.movies.Add(movieWallE);
+            return View(movie_1);
+        }
+
 
     }
 }
