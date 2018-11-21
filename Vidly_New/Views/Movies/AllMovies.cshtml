@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "AllMovies";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+   
+}
+
+<h2>Movies</h2>
+<a class="btn btn-primary" href=@Url.Action("New", 0)>New Movie</a>
+
+ <br />
+<table class ="table table-bordered table-hover">
+   
+
+    <tbody>
+        <tr>
+            <th>Movie</th>
+            <th>Genre</th>
+        </tr>
+
+        @foreach (var item in ViewData["movies"] as List<Vidly.Models.Movie>)
+        {
+            <tr>
+                <td>@Html.ActionLink(@item.Name, "Edit", new { item.Id })</td>
+                <td>@item.Genre.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>

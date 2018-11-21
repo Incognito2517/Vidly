@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var list = ViewData["Customers"] as List<Vidly.Models.Customer>;
+
+}
+
+<h2>Customers</h2>
+@if (list.Count < 1)
+{
+    <a class="btn btn-primary" href=@Url.Action("New", 0)>New Customer</a>
+    <p>We don't currently have customers!</p>
+}
+else
+{
+    <a class="btn btn-primary" href=@Url.Action("New", 0)>New Customer</a>
+    <br />
+    <table class="table table-bordered table-hover">
+
+
+        <tbody>
+            <tr>
+                <th>Customers</th>
+                <th>Discount Range</th>
+            </tr>
+
+            @foreach (var item in list)
+            {
+
+                <tr>
+                    <td>@Html.ActionLink(@item.Name, "Edit", new { item.Id })</td>
+                    <td>@item.MembershipType.Name</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}
+
